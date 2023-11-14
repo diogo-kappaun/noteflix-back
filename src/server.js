@@ -1,7 +1,11 @@
-import express from "express"
+import express from "express";
+import routes from "./routes/index.js";
 
-const app = express()
+const app = express();
 
-const PORT = 3333
+app.use(express.json())
 
-app.listen(PORT, () => console.log(`Server is running on Port: ${PORT}`))
+app.use(routes);
+
+const PORT = 3333;
+app.listen(PORT, () => console.log(`Server is running on Port: ${PORT}`));
