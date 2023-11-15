@@ -1,4 +1,4 @@
-class AppError {
+export class AppError {
   message;
   statusCode;
 
