@@ -6,7 +6,7 @@ export class usersController {
     if (!name || !email || !password) {
       throw new AppError("All fields are required!");
     }
-    
+
     return response.json({ name, email, password });
   }
 }
