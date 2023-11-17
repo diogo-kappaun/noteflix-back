@@ -13,8 +13,10 @@ export class usersController {
       throw new AppError("All fields are mandatory.");
     }
 
-    const registeredEmails = await knex("users").select("email").where({ email }).first()
-    
+    const registeredEmails = await knex("users")
+      .select("email")
+      .where({ email })
+      .first();
     if (registeredEmails) {
       throw new AppError("Email is already registered!");
     }
@@ -41,5 +43,13 @@ export class usersController {
     }
 
     return response.json(JSON.stringify(user));
+  }
+
+  async delete(request, response) {
+    const { id } = request.params;
+
+    await knex("users").delete("*").where({ id });
+
+    return response.json({ message: "User deleted successfully." });
   }
 }
