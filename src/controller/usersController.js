@@ -2,7 +2,7 @@ import { AppError } from "../utils/AppError.js";
 import { knexConnection } from "../database/knex/index.js";
 import pkg from "bcryptjs";
 
-const { hash } = pkg;
+const { hash, compare } = pkg;
 const knex = knexConnection;
 
 export class usersController {
@@ -17,6 +17,7 @@ export class usersController {
       .select("email")
       .where({ email })
       .first();
+
     if (registeredEmails) {
       throw new AppError("Email is already registered!");
     }
@@ -33,16 +34,48 @@ export class usersController {
   }
 
   async update(request, response) {
-    const { name, email, password } = request.body;
+    const { name, email, password, old_password } = request.body;
     const { id } = request.params;
 
-    const user = await knex("users").where({ id });
+    const user = await knex("users").where({ id }).first();
 
     if (!user) {
       throw new AppError("User not found!");
     }
 
-    return response.json(JSON.stringify(user));
+    if (user.email == email) {
+      throw new AppError("Email is already in use");
+    }
+
+    if (user.name == name) {
+      throw new AppError("Name is already in use")
+    }
+
+    user.name = name ?? user.name;
+    user.email = email ?? user.email;
+
+    if (password && !old_password) {
+      throw new AppError("Old password not provided");
+    }
+
+    if (password && old_password) {
+      const checkOldPassword = await compare(old_password, user.password)
+
+      if (!checkOldPassword) {
+        throw new AppError("Password does not match");
+      }
+
+      user.password = await hash(password, 8)
+    }
+
+    await knex("users").update({
+      name: user.name,
+      email: user.email,
+      password: user.password,
+      updated_at: knex.fn.now(),
+    }).where({ id })
+
+    return response.json("User updated successfully");
   }
 
   async delete(request, response) {
