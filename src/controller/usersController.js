@@ -10,7 +10,13 @@ export class usersController {
     const { name, email, password } = request.body;
 
     if (!name || !email || !password) {
-      throw new AppError("All fields are required!");
+      throw new AppError("All fields are mandatory.");
+    }
+
+    const registeredEmails = await knex("users").select("email").where({ email }).first()
+    
+    if (registeredEmails) {
+      throw new AppError("Email is already registered!");
     }
 
     const hashPassword = await hash(password, 8);
@@ -21,7 +27,7 @@ export class usersController {
       password: hashPassword,
     });
 
-    return response.json({ name, email, password });
+    return response.json({ message: "Registered user successfully." });
   }
 
   async update(request, response) {
