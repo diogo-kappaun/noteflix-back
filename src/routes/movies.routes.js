@@ -7,5 +7,6 @@ const movieController = new moviesController();
 
 moviesRoutes.post("/:user_id", movieController.create);
 moviesRoutes.delete("/:id", movieController.delete)
+moviesRoutes.get("/:id", movieController.show)
 
 export default moviesRoutes;
