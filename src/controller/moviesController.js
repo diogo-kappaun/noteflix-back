@@ -43,4 +43,12 @@ export class moviesController {
 
     return response.json("Movie note created.");
   }
+
+  async delete(request, response) {
+    const { id } = request.params
+
+    await knex("movies").delete("*").where({ id })
+  
+    return response.json("Movie successfully deleted.");
+  }
 }
