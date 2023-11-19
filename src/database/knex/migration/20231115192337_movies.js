@@ -1,7 +1,7 @@
 export const up = (knex) =>
   knex.schema.createTable("movies", (table) => {
     table.increments("id");
-    table.string("name");
+    table.string("title");
     table.string("description");
     table.integer("rating").unsigned().notNullable().defaultTo(1);
     table.integer("user_id").references("id").inTable("users").onDelete("CASCADE");

@@ -4,7 +4,7 @@ import { AppError } from "../utils/AppError.js";
 const knex = knexConnection;
 export class moviesController {
   async create(request, response) {
-    const { name, description, rating, tags } = request.body;
+    const { title, description, rating, tags } = request.body;
     const { user_id } = request.params;
 
     const checkUserExist = await knex("users")
@@ -16,7 +16,7 @@ export class moviesController {
       throw new AppError("The user doesn't exist.");
     }
 
-    if (!name || !description || !rating) {
+    if (!title || !description || !rating) {
       throw new AppError("All fields are mandatory.");
     }
 
@@ -25,7 +25,7 @@ export class moviesController {
     }
 
     const [movie_id] = await knex("movies").insert({
-      name,
+      title,
       description,
       rating,
       user_id,
@@ -47,7 +47,7 @@ export class moviesController {
   async delete(request, response) {
     const { id } = request.params;
 
-    await knex("movies").delete("*").where({ id });
+    await knex("movies").where({ id }).delete();
 
     return response.json("Movie successfully deleted.");
   }
@@ -65,23 +65,24 @@ export class moviesController {
   }
 
   async index(request, response) {
-    const { name, user_id, tags } = request.query;
+    const { title, user_id, tags } = request.query;
 
     let movies;
 
     if (tags) {
       const filterTags = tags.split(",").map((tag) => tag.trim());
-
       movies = await knex("tags")
-        .select(["movies.id", "movies.user_id", "movies.name"])
+        .select(["movies.id", "movies.user_id", "title"])
         .where("movies.user_id", user_id)
-        .whereLike("movies.name", `%${name}%`)
-        .whereIn("tags.name", filterTags)
-        .innerJoin("movies", "movies.id", "tags.name");
+        .whereLike("movies.title", `%${title}%`)
+        .whereIn("name", filterTags)
+        .innerJoin("movies", "movies.id", "tags.movie_id")
+        .orderBy("name");
     } else {
       movies = await knex("movies")
         .where({ user_id })
-        .whereLike("name", `%${name}%`);
+        .whereLike("title", `%${title}%`)
+        .orderBy("title");
     }
 
     const userTags = await knex("tags").where({ user_id });
