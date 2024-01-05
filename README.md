@@ -10,21 +10,21 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/diogo-kappaun/rocket-movies">
-    <h3 align="center">API: Rocket Movies</h3>
+  <a href="https://github.com/diogo-kappaun/noteflix-back">
+    <h3 align="center">API: Noteflix</h3>
   </a>
 
   <p align="center">
     API for movie note creation.
     <br />
-    <a href="https://github.com/diogo-kappaun/rocket-movies"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/diogo-kappaun/noteflix-back"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/diogo-kappaun/rocket-movies">View Demo</a>
+    <a href="https://github.com/diogo-kappaun/noteflix-back">View Demo</a>
     ·
-    <a href="https://github.com/diogo-kappaun/rocket-movies/issues">Report Bug</a>
+    <a href="https://github.com/diogo-kappaun/noteflix-back/issues">Report Bug</a>
     ·
-    <a href="https://github.com/diogo-kappaun/rocket-movies/issues">Request Feature</a>
+    <a href="https://github.com/diogo-kappaun/noteflix-back/issues">Request Feature</a>
   </p>
 </div>
 
@@ -83,7 +83,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/diogo-kappaun/rocket-movies.git
+   git clone https://github.com/diogo-kappaun/noteflix-back.git
    ```
 2. Install NPM packages
    ```sh
@@ -100,7 +100,7 @@ This is an example of how to list things you need to use the software and how to
 
 - [ ] Search using only tags
 
-See the [open issues](https://github.com/diogo-kappaun/rocket-movies/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/diogo-kappaun/noteflix-back/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -129,7 +129,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Diogo Kappaun - diogohkappaun@gmail.com
 
-Project Link: [https://github.com/diogo-kappaun/rocket-movies](https://github.com/diogo-kappaun/rocket-movies)
+Project Link: [https://github.com/diogo-kappaun/noteflix-back](https://github.com/diogo-kappaun/noteflix-back)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -139,16 +139,16 @@ Project Link: [https://github.com/diogo-kappaun/rocket-movies](https://github.co
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-[contributors-shield]: https://img.shields.io/github/contributors/diogo-kappaun/rocket-movies.svg?style=for-the-badge
-[contributors-url]: https://github.com/diogo-kappaun/rocket-movies/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/diogo-kappaun/rocket-movies.svg?style=for-the-badge
-[forks-url]: https://github.com/diogo-kappaun/rocket-movies/network/members
-[stars-shield]: https://img.shields.io/github/stars/diogo-kappaun/rocket-movies.svg?style=for-the-badge
-[stars-url]: https://github.com/diogo-kappaun/rocket-movies/stargazers
-[issues-shield]: https://img.shields.io/github/issues/diogo-kappaun/rocket-movies.svg?style=for-the-badge
-[issues-url]: https://github.com/diogo-kappaun/rocket-movies/issues
-[license-shield]: https://img.shields.io/github/license/diogo-kappaun/rocket-movies.svg?style=for-the-badge
-[license-url]: https://github.com/diogo-kappaun/rocket-movies/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/diogo-kappaun/noteflix-back.svg?style=for-the-badge
+[contributors-url]: https://github.com/diogo-kappaun/noteflix-back/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/diogo-kappaun/noteflix-back.svg?style=for-the-badge
+[forks-url]: https://github.com/diogo-kappaun/noteflix-back/network/members
+[stars-shield]: https://img.shields.io/github/stars/diogo-kappaun/noteflix-back.svg?style=for-the-badge
+[stars-url]: https://github.com/diogo-kappaun/noteflix-back/stargazers
+[issues-shield]: https://img.shields.io/github/issues/diogo-kappaun/noteflix-back.svg?style=for-the-badge
+[issues-url]: https://github.com/diogo-kappaun/noteflix-back/issues
+[license-shield]: https://img.shields.io/github/license/diogo-kappaun/noteflix-back.svg?style=for-the-badge
+[license-url]: https://github.com/diogo-kappaun/noteflix-back/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/diogo-kappaun
 [JS]: https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
