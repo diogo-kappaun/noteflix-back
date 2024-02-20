@@ -1,6 +1,12 @@
-import { knex } from "../database/knex"
-import { AppError } from "../utils/AppError"
-import { compare } from "bcryptjs"
+import { knexConnection } from "../database/knex/index.js"
+import { AppError } from "../utils/AppError.js"
+import pkgb from "bcryptjs"
+import authConfig from "../configs/auth.js"
+import pkg from "jsonwebtoken"
+
+const knex = knexConnection
+const { compare } = pkgb
+const { sign } = pkg
 
 export class SessionsControllers {
   async create(request, response) {
