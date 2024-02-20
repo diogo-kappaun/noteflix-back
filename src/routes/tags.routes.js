@@ -1,10 +1,11 @@
-import { Router } from "express";
-import { tagsController } from "../controller/tagsController.js";
+import { Router } from "express"
+import { tagsController } from "../controller/tagsController.js"
+import { ensureAuthenticated } from "../middlewares/ensureAuthenticated.js"
 
 const tagsRoutes = Router()
 
 const tagController = new tagsController
 
-tagsRoutes.get("/:user_id", tagController.index)
+tagsRoutes.get("/", ensureAuthenticated, tagController.index)
 
-export default tagsRoutes;
+export default tagsRoutes
