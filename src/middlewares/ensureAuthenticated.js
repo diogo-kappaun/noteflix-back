@@ -1,6 +1,6 @@
 import pkg from "jsonwebtoken"
-import { AppError } from "../utils/AppError"
-import authConfig from "../configs/auth"
+import { AppError } from "../utils/AppError.js"
+import authConfig from "../configs/auth.js"
 const { verify } = pkg
 
 export function ensureAuthenticated(request, response, next) {
