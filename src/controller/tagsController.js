@@ -1,13 +1,13 @@
-import { knexConnection } from "../database/knex/index.js";
+import { knexConnection } from "../database/knex/index.js"
 
 const knex = knexConnection
 
 export class tagsController {
-  async index(request, response) {
-    const { user_id } = request.params
+	async index(request, response) {
+		const user_id = request.user.id
 
-    const tags = await knex("tags").where({user_id})
+		const tags = await knex("tags").where({user_id})
 
-    return response.json({ tags })
-  }
+		return response.json({ tags })
+	}
 }
