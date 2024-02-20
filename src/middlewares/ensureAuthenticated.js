@@ -20,7 +20,7 @@ export function ensureAuthenticated(request, response, next) {
 		}
     
 		return next()
-	} catch (error) {
+	} catch {
 		throw new AppError("JWT Token inválido", 401)
 	}
 }
