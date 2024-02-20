@@ -1,5 +1,5 @@
-import { Router } from 'express'
-import { SessionsControllers } from '../controller/sessionsController.js'
+import { Router } from "express"
+import { SessionsControllers } from "../controller/sessionsController.js"
 
 const sessionsControllers = new SessionsControllers()
 
