@@ -2,10 +2,10 @@ import path from "path"
 import Path from "./src/utils/Path.js"
 import multer from "multer"
 
-export const TMP_FOLDER = path.resolve(Path.dirname(import.meta.url), "tmp")
-export const UPLOADS_FOLDER = path.resolve(Path.dirname(import.meta.url), "tmp", "uploads" )
+const TMP_FOLDER = path.resolve(Path.dirname(import.meta.url), "tmp")
+const UPLOADS_FOLDER = path.resolve(Path.dirname(import.meta.url), "tmp", "uploads" )
 
-export const MULTER = {
+const MULTER = {
 	storage: multer.diskStorage({
 		destination: TMP_FOLDER,
 		filename(request, file, callback) {
@@ -15,4 +15,10 @@ export const MULTER = {
 			return callback(null, fileName)
 		}
 	})
+}
+
+export default {
+	TMP_FOLDER,
+	UPLOADS_FOLDER,
+	MULTER
 }
