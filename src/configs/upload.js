@@ -1,5 +1,5 @@
 import path from "path"
-import Path from "./src/utils/Path.js"
+import Path from "../utils/Path.js"
 import multer from "multer"
 
 const TMP_FOLDER = path.resolve(Path.dirname(import.meta.url), "tmp")
