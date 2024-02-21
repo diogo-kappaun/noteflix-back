@@ -1,6 +1,6 @@
 import fs from "fs"
 import path from "path"
-import uploadConfig from "../configs/upload"
+import uploadConfig from "../configs/upload.js"
 
 class DiskStorage {
 	async saveFile(file) {
@@ -23,4 +23,4 @@ class DiskStorage {
 	}
 }
 
-export default DiskStorage
+export default new DiskStorage
