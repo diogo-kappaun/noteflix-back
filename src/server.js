@@ -3,11 +3,14 @@ import express from "express"
 import routes from "./routes/index.js"
 import { AppError } from "./utils/AppError.js"
 import { sqliteConnection } from "./database/sqlite/index.js"
+import uploadConfig from "./configs/upload.js"
 
 sqliteConnection()
 
 const app = express()
 app.use(express.json())
+
+app.use("/files", express.static(uploadConfig.UPLOADS_FOLDER))
 
 app.use(routes)
 
