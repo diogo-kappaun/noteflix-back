@@ -1,9 +1,9 @@
 import path from "path"
-import Path from "../utils/Path.js"
 import multer from "multer"
+import crypto from "crypto"
 
-const TMP_FOLDER = path.resolve(Path.dirname(import.meta.url), "tmp")
-const UPLOADS_FOLDER = path.resolve(Path.dirname(import.meta.url), "tmp", "uploads" )
+const TMP_FOLDER = path.resolve("tmp")
+const UPLOADS_FOLDER = path.resolve("tmp", "uploads")
 
 const MULTER = {
 	storage: multer.diskStorage({
