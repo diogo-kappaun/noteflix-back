@@ -4,6 +4,7 @@ import routes from "./routes/index.js"
 import { AppError } from "./utils/AppError.js"
 import { sqliteConnection } from "./database/sqlite/index.js"
 import uploadConfig from "./configs/upload.js"
+import cors from "cors"
 
 sqliteConnection()
 
@@ -13,6 +14,7 @@ app.use(express.json())
 app.use("/files", express.static(uploadConfig.UPLOADS_FOLDER))
 
 app.use(routes)
+app.use(cors())
 
 app.use((error, request, response, next) => {
 	if (error instanceof AppError) {
