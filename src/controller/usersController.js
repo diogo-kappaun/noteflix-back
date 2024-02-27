@@ -1,6 +1,6 @@
-import { AppError } from "../utils/AppError.js"
-import { knexConnection } from "../database/knex/index.js"
 import pkg from "bcryptjs"
+import { knexConnection } from "../database/knex/index.js"
+import { AppError } from "../utils/AppError.js"
 
 const { hash, compare } = pkg
 const knex = knexConnection
@@ -10,7 +10,7 @@ export class usersController {
 		const { name, email, password } = request.body
 
 		if (!name || !email || !password) {
-			throw new AppError("All fields are mandatory.")
+			throw new AppError("Todos os campos são obrigatórios")
 		}
 
 		const registeredEmails = await knex("users")
@@ -19,7 +19,7 @@ export class usersController {
 			.first()
 
 		if (registeredEmails) {
-			throw new AppError("Email is already registered!")
+			throw new AppError("O e-mail já está registrado!")
 		}
 
 		const hashPassword = await hash(password, 8)
@@ -30,7 +30,7 @@ export class usersController {
 			password: hashPassword,
 		})
 
-		return response.json({ message: "Registered user successfully." })
+		return response.json({ message: "Usuário registrado com sucesso." })
 	}
 
 	async update(request, response) {
@@ -40,29 +40,29 @@ export class usersController {
 		const user = await knex("users").where({ id: user_id }).first()
 
 		if (!user) {
-			throw new AppError("User not found!")
+			throw new AppError("Usuário não encontrado!")
 		}
 
 		if (user.email == email) {
-			throw new AppError("Email is already in use")
+			throw new AppError("O e-mail já está em uso.")
 		}
 
 		if (user.name == name) {
-			throw new AppError("Name is already in use")
+			throw new AppError("O nome já está em uso.")
 		}
 
 		user.name = name ?? user.name
 		user.email = email ?? user.email
 
 		if (password && !old_password) {
-			throw new AppError("Old password not provided")
+			throw new AppError("Senha antiga não fornecida.")
 		}
 
 		if (password && old_password) {
 			const checkOldPassword = await compare(old_password, user.password)
 
 			if (!checkOldPassword) {
-				throw new AppError("Password does not match")
+				throw new AppError("A senha não corresponde.")
 			}
 
 			user.password = await hash(password, 8)
@@ -75,7 +75,7 @@ export class usersController {
 			updated_at: knex.fn.now(),
 		}).where({ id: user_id })
 
-		return response.json("User updated successfully")
+		return response.json("Usuário atualizado com sucesso.")
 	}
 
 	async delete(request, response) {
@@ -83,6 +83,6 @@ export class usersController {
 
 		await knex("users").delete("*").where({ id })
 
-		return response.json({ message: "User deleted successfully." })
+		return response.json({ message: "Usuário excluído com sucesso." })
 	}
 }

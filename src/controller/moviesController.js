@@ -13,15 +13,15 @@ export class moviesController {
 			.first()
 
 		if (!checkUserExist) {
-			throw new AppError("The user doesn't exist.")
+			throw new AppError("O usuário não existe.")
 		}
 
 		if (!title || !description || !rating) {
-			throw new AppError("All fields are mandatory.")
+			throw new AppError("Todos os campos são obrigatórios.")
 		}
 
 		if (description.length > 250) {
-			throw new AppError("Character limit of 250, be more concise.")
+			throw new AppError("Limite de caracteres de 250, seja mais conciso.")
 		}
 
 		const [movie_id] = await knex("movies").insert({
@@ -41,7 +41,7 @@ export class moviesController {
 
 		await knex("tags").insert(tagsInsert)
 
-		return response.json("Movie note created.")
+		return response.json("Nota do filme criada.")
 	}
 
 	async delete(request, response) {
@@ -49,7 +49,7 @@ export class moviesController {
 
 		await knex("movies").where({ id }).delete()
 
-		return response.json("Movie successfully deleted.")
+		return response.json("Filme excluído com sucesso.")
 	}
 
 	async show(request, response) {
