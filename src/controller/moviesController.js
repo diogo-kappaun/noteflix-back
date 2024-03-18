@@ -5,7 +5,7 @@ const knex = knexConnection
 export class moviesController {
 	async create(request, response) {
 		const { title, description, rating, tags } = request.body
-		const { user_id } = request.params
+		const user_id = request.user.id
 
 		const checkUserExist = await knex("users")
 			.select("id")
@@ -20,8 +20,8 @@ export class moviesController {
 			throw new AppError("Todos os campos são obrigatórios.")
 		}
 
-		if (description.length > 250) {
-			throw new AppError("Limite de caracteres de 250, seja mais conciso.")
+		if (description.length > 400) {
+			throw new AppError("Limite de caracteres de 400, seja mais conciso.")
 		}
 
 		const [movie_id] = await knex("movies").insert({
