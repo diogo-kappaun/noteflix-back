@@ -5,7 +5,7 @@ const knex = knexConnection
 export class moviesController {
 	async create(request, response) {
 		const { title, description, rating, tags } = request.body
-		const user_id = request.use
+		const user_id = request.user.id
 
 		const checkUserExist = await knex("users")
 			.select("id")
