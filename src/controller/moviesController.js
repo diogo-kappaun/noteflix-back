@@ -65,7 +65,9 @@ export class moviesController {
 	}
 
 	async index(request, response) {
-		const { title, user_id, tags } = request.query
+		const { title, tags } = request.query
+
+		const user_id = request.user.id
 
 		let movies
 
@@ -95,7 +97,7 @@ export class moviesController {
 			}
 		})
 
-		return response.json({ moviesWithTags })
+		return response.json(moviesWithTags)
 	}
 }
 3
