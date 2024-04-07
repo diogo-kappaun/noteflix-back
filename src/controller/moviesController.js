@@ -46,6 +46,13 @@ export class moviesController {
 
 	async delete(request, response) {
 		const { id } = request.params
+		const userAuthId = request.user.id
+
+		const note = await knex("movies").where({ id })
+
+		if (userAuthId !== note.user_id) {
+			throw new AppError("Você não tem permissão para excluir o registro de outro usuário.")
+		}
 
 		await knex("movies").where({ id }).delete()
 
@@ -54,9 +61,14 @@ export class moviesController {
 
 	async show(request, response) {
 		const { id } = request.params
+		const userAuthId = request.user.id
 
 		const note = await knex("movies").where({ id }).first()
 		const tags = await knex("tags").where("movie_id", id).orderBy("name")
+
+		if (userAuthId !== note.user_id) {
+			throw new AppError("Você não tem permissão para ver o registro de outro usuário.")
+		}
 
 		return response.json({
 			note,
