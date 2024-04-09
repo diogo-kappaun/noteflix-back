@@ -48,7 +48,7 @@ export class moviesController {
 		const { id } = request.params
 		const userAuthId = request.user.id
 
-		const note = await knex("movies").where({ id })
+		const note = await knex("movies").where({ id }).first()
 
 		if (userAuthId !== note.user_id) {
 			throw new AppError("Você não tem permissão para excluir o registro de outro usuário.")
