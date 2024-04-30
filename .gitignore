@@ -2,3 +2,4 @@
 /src/database/database.db
 *.jpg
 *.png
+.env

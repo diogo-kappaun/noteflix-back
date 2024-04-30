@@ -1,6 +1,7 @@
 export default {
 	jwt: {
-		secret: "default", 
+		// eslint-disable-next-line no-undef
+		secret: process.env.AUTH_SECRET || "default", 
 		expiresIn: "1d",
 	}
 }
