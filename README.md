@@ -64,7 +64,6 @@ I aimed to create a creator and data handler for a movie notes project. Within i
 
 * [![Javascript][JS]][JS-url]
 * [![SQLite][SQLite]][SQLite-url]
-* [![Vite][Vitejs]][Vite-url]
 * [![Node][Nodejs]][Node-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -155,7 +154,5 @@ Project Link: [https://github.com/diogo-kappaun/noteflix-back](https://github.co
 [JS-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [SQLite]: https://img.shields.io/badge/Sqlite-003B57?style=for-the-badge&logo=sqlite&logoColor=white
 [SQLite-url]: https://www.sqlite.org/index.html
-[Vitejs]: https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E
-[Vite-url]: https://vitejs.dev/config/
 [Nodejs]: https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white
 [Node-url]: https://nodejs.org/en/docs
